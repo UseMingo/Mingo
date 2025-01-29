@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.nav-links button, .nav-footer a {
+    background-color: #444;
+    color: yellow;
+    border: none;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-links button:hover, .nav-footer a:hover {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.profile-info {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+input[type="text"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border: 1px solid yellow;
+}
+
+button {
+    background-color: #0095f6;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007bb5;
+}
+
+.gender-selection {
+    margin: 10px 0;
+}
+
+.user-result {
+    background-color: #444;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button.follow-btn {
+    background-color: #28a745;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+
+button.follow-btn:hover {
+    background-color: #218838;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.nav-footer a {
+    padding: 10px 20px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode header, .dark-mode footer {
+    background-color: #333;
+}
+
+.dark-mode .nav-links button, .dark-mode .nav-footer a {
+    background-color: #444;
+    color: yellow;
+}
+
+.dark-mode input, .dark-mode textarea, .dark-mode select {
+    background-color: #444;
+    color: white;
+    border: 1px solid #444;
+}
+
+.dark-mode .profile-info, .dark-mode .user-result {
+    background-color: #444;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+.light-mode header, .light-mode footer {
+    background-color: #ddd;
+}
+
+.light-mode .nav-links button, .light-mode .nav-footer a {
+    background-color: #ccc;
+    color: black;
+}
+
+.light-mode input, .light-mode textarea, .light-mode select {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.light-mode .profile-info, .light-mode .user-result {
+    background-color: #eee;
+}
+
+/* Toggle Button */
+#dark-mode-toggle {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #ffaa00;
+}
+
+/* Notification Popup */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
