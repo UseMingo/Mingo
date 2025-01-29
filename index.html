@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mingo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Mingo.png" type="image/x-icon"> 
+</head>
+
+<body>
+    <!-- Header -->
+   <header>
+        <img src="Mingo.jpg" alt="Logo Image" width="50" height="50">
+        <div class="logo">Mingo</div>
+        <div class="nav-links">
+            <button id="home-btn">Home</button>
+            <button id="search-btn">Search</button>
+            <button id="explore-btn">Explore</button>
+            <button id="upload-btn">Upload</button>
+            <button id="profile-btn">Profile</button>
+        </div>
+        <button id="dark-mode-toggle">🌙 Dark Mode</button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <h2>Welcome to Home</h2>
+            <div id="trending"></div> <!-- Trending Section -->
+            <div id="reel-container"></div> <!-- Reel Section for Videos -->
+        </div>
+
+        <!-- Search Page -->
+        <div id="search" class="page">
+            <h2>Search for Users</h2>
+            <input type="text" id="search-bar" placeholder="Search Users...">
+            <div id="search-results"></div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile" class="page">
+            <h2>Your Profile</h2>
+            <input type="color" id="username-color"> Choose Username Color
+            <input type="text" id="status" placeholder="Set your status...">
+            <div class="badges">
+                <h3>Your Badges</h3>
+                <span id="badge">Newbie 👶</span>
+            </div>
+            <input type="file" id="profile-music" accept="audio/*">
+            <audio id="music-player" controls></audio>
+        </div>
+
+        <!-- Upload Page -->
+        <div id="upload" class="page">
+            <h2>Upload Your Post</h2>
+            <form id="upload-form" action="https://formspree.io/f/xzzdeall" method="POST" enctype="multipart/form-data">
+                <input type="file" name="video" accept="video/*" required>
+                <input type="text" name="title" placeholder="Video Title" required>
+                <textarea name="description" placeholder="Video Description" required></textarea>
+                <input type="text" name="hashtags" placeholder="#Hashtags">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="nav-footer">
+            <a href="#" id="home-btn-footer">Home</a>
+            <a href="#" id="search-btn-footer">Search</a>
+            <a href="#" id="upload-btn-footer">Upload</a>
+            <a href="#" id="profile-btn-footer">Profile</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
