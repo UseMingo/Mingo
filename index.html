@@ -7,75 +7,139 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Mingo.png" type="image/x-icon"> 
 </head>
-
 <body>
     <!-- Header -->
-   <header>
-        <img src="Mingo.JPG" alt="Logo Image" width="50" height="50">
+    <header>
+        <img src="Mingo.jpg" alt="Logo" width="50" height="50">
         <div class="logo">Mingo</div>
-        <div class="nav-links">
-            <button id="home-btn">Home</button>
-            <button id="search-btn">Search</button>
-            <button id="explore-btn">Explore</button>
-            <button id="upload-btn">Upload</button>
-            <button id="profile-btn">Profile</button>
-        </div>
-        <button id="dark-mode-toggle">🌙 Dark Mode</button>
+        <nav>
+            <button onclick="switchPage('home')">Home</button>
+            <button onclick="switchPage('explore')">Explore</button>
+            <button onclick="switchPage('upload')">Upload</button>
+            <button onclick="switchPage('profile')">Profile</button>
+        </nav>
+        <button id="dark-mode-toggle"> Dark Mode</button>
+        <button id="settings-btn">Settings</button>
     </header>
-
+    
     <!-- Main Content -->
     <main>
-        <!-- Home Page -->
-        <div id="home" class="page active">
-            <h2>Welcome to Home</h2>
-            <div id="trending"></div> <!-- Trending Section -->
-            <div id="reel-container"></div> <!-- Reel Section for Videos -->
-        </div>
+        <!-- Home Section -->
+<section id="home" class="page active">
+    <h2>Welcome to Mingo</h2>
+    <div id="notifications" class="notification"></div>
+    <h3>Trending Posts</h3>
+    <div id="trending-posts"></div>
+    <div id="post-section"></div>
 
-        <!-- Search Page -->
-        <div id="search" class="page">
-            <h2>Search for Users</h2>
-            <input type="text" id="search-bar" placeholder="Search Users...">
+    <!-- Reels Section -->
+    <h3>Reels</h3>
+    <div id="reels-section"></div>
+</section>
+
+        
+        <!-- Explore Section -->
+        <section id="explore" class="page">
+            <h2>Explore</h2>
+            <input type="text" id="search-bar" placeholder="Search users..." onkeyup="searchUsers()">
             <div id="search-results"></div>
-        </div>
-
-        <!-- Profile Page -->
-        <div id="profile" class="page">
-            <h2>Your Profile</h2>
-            <input type="color" id="username-color"> Choose Username Color
-            <input type="text" id="status" placeholder="Set your status...">
-            <div class="badges">
-                <h3>Your Badges</h3>
-                <span id="badge">Newbie 👶</span>
-            </div>
-            <input type="file" id="profile-music" accept="audio/*">
-            <audio id="music-player" controls></audio>
-        </div>
-
-        <!-- Upload Page -->
-        <div id="upload" class="page">
-            <h2>Upload Your Post</h2>
-            <form id="upload-form" action="https://formspree.io/f/xzzdeall" method="POST" enctype="multipart/form-data">
-                <input type="file" name="video" accept="video/*" required>
-                <input type="text" name="title" placeholder="Video Title" required>
-                <textarea name="description" placeholder="Video Description" required></textarea>
-                <input type="text" name="hashtags" placeholder="#Hashtags">
+        </section>
+        
+        <!-- Upload Section -->
+        <section id="upload" class="page">
+            <h2>Upload Post</h2>
+            <form id="upload-form">
+                <input type="file" accept="image/*,video/*">
+                <input type="text" placeholder="Title" required>
+                <textarea placeholder="Description" required></textarea>
                 <button type="submit">Upload</button>
             </form>
+        </section>
+        
+        <!-- Profile Section -->
+       <section id="profile" class="page">
+    <h2>Your Profile</h2>
+    <div class="profile-info">
+        <!-- Profile Picture Upload -->
+        <<input type="file" id="profile-pic" accept="image/*">
+<img id="profile-img" src="default.png" alt="Profile Picture">
+
+        
+        <!-- Username and Bio -->
+        <input type="text" id="username" placeholder="Enter username">
+        <textarea id="bio" placeholder="Enter bio"></textarea>
+        
+        <!-- Save Button -->
+        <button onclick="saveProfile()">Save</button>
+    </div>
+</section>
+
+
+<!-- Settings Section -->
+<section id="settings" class="page">
+    <h2>Settings</h2>
+    <div class="settings-container">
+        <!-- Profile Settings -->
+        <div class="settings-section">
+            <h3>Profile Settings</h3>
+            <label for="settings-username">Username</label>
+            <input type="text" id="settings-username" placeholder="Enter username" value="" />
+            <label for="settings-bio">Bio</label>
+            <textarea id="settings-bio" placeholder="Enter bio"></textarea>
+            <label for="settings-profile-pic">Profile Picture</label>
+            <input type="file" id="settings-profile-pic" accept="image/*" />
+            <button onclick="saveProfileSettings()">Save Profile</button>
         </div>
+        
+        <!-- Privacy & Security -->
+        <div class="settings-section">
+            <h3>Privacy & Security</h3>
+            <label for="settings-password">Change Password</label>
+            <input type="password" id="settings-password" placeholder="Enter new password" />
+            <label for="settings-confirm-password">Confirm Password</label>
+            <input type="password" id="settings-confirm-password" placeholder="Confirm new password" />
+            <button onclick="changePassword()">Change Password</button>
+        </div>
+        
+        <!-- Notification Settings -->
+        <div class="settings-section">
+            <h3>Notification Settings</h3>
+            <label for="settings-notifications">Enable Notifications</label>
+            <input type="checkbox" id="settings-notifications" />
+            <label for="settings-notifications">Receive notifications for likes, comments, and follows</label>
+            <button onclick="saveNotificationSettings()">Save Notifications</button>
+        </div>
+        
+        <!-- Theme Settings -->
+        <div class="settings-section">
+            <h3>Theme Settings</h3>
+            <label for="theme-toggle">Switch to Dark Mode</label>
+            <input type="checkbox" id="theme-toggle" />
+            <button onclick="saveThemeSettings()">Save Theme</button>
+        </div>
+        
+        <!-- Account Management -->
+        <div class="settings-section">
+            <h3>Account Management</h3>
+            <button onclick="deactivateAccount()">Deactivate Account</button>
+        </div>
+    </div>
+</section>
+
+
+
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="nav-footer">
-            <a href="#" id="home-btn-footer">Home</a>
-            <a href="#" id="search-btn-footer">Search</a>
-            <a href="#" id="upload-btn-footer">Upload</a>
-            <a href="#" id="profile-btn-footer">Profile</a>
+            <a href="javascript:void(0)" onclick="switchPage('home')">Home</a>
+            <a href="javascript:void(0)" onclick="switchPage('explore')">Explore</a>
+            <a href="javascript:void(0)" onclick="switchPage('upload')">Upload</a>
+            <a href="javascript:void(0)" onclick="switchPage('profile')">Profile</a>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
